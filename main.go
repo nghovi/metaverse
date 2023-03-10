@@ -31,7 +31,7 @@ func addMyFamily(me *huma.Huma) {
 }
 
 func main() {
-	dsn := "root:root@tcp(127.0.0.1:3306)/metaverse?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:Yennhi0@@tcp(127.0.0.1:3306)/metaverse?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Println(err.Error())
@@ -43,11 +43,13 @@ func main() {
 	me.SelfIntroduce()
 
 	for {
-		choices := []string{"1:Show_today_acts", "2:Feed_Viet", "3:Sleep_Viet"}
+		choices := []string{"0:exit, 1:Show_today_acts", "2:Feed_Viet", "3:Sleep_Viet"}
 		fmt.Println("Please chose: ", choices)
 		var choice int
 		fmt.Scan(&choice)
 		switch choice {
+		case 0:
+			return
 		case 1:
 			me.ReportDailyActivities()
 		case 2:
